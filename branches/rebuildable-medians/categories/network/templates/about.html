@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  <h1>{{ page_title }}</h1>
+
+
+  <a href="/network/test?autorun=1" class="bs-btn">Run the Network Tests</a>
+
+  <h2 id="rt-tests">More About Each Network Test</h2>
+  {% for test in tests %}
+    <h3 id="rt-{{ test.key }}">{{ test.name }}</h3>
+    <p>
+      {{ test.doc }}
+    </p>
+  {% endfor %}
+
+
+{% endblock %}
