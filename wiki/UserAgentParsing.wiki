@@ -1,0 +1,51 @@
+#summary User Agent Parsing Design Doc
+
+= Introduction =
+
+The current user agent parsing library in Browserscope needs to become its own project with its own maintainers. Browserscope should dogfood this project.
+
+
+= Features =
+
+  * *Parsing the User Agent String*
+
+    useragentstring.com does a pretty great job of UI for explaining and parsing the bits of the UA string. This project should be able to get the same datapoints from the UA string that useragentstring.com does: 
+      * Mozilla based
+      * Mozilla version
+      * X11 based
+      * Security
+      * OS
+      * CPU family
+      * Language Tag
+      * Renderer (i.e. Webkit, Trident, Presto)
+      * Renderer Version
+      * I don't see a utility for the "KHTML" and "like Gecko" bits, but whatever.
+      * Based on
+      * Browser Build (not really sure about this either)
+ 
+    Additionally, beyond just seeing version as a dotted string, we should split that string into the following components:
+
+      * Browser Family (i.e. Firefox, IE, Chrome, etc..)
+      * Project Name (optional, i.e. Namoroka, Shiretoko)
+      * Major Version
+      * Minor Version
+      * Version Third Bit
+      * Version Fourth Bit?
+      * *Open Question*: How should we handle the "alpha/beta" bit, like apre1? I'm inclined to say we put it in its own datapoint and let people group together how ever they want, but not leave it attached to any of the version bits.
+
+  * Front End for the project
+    * Basically like useragentstring.com
+    * Additionally offers the following download files
+      # A json dictionary for *download* (w/ referer check to prevent abuse) consisting of {{{ 'allknownuseragentstrings': { all bits and values as a list } }}}
+      # An ordered list of regular expressions and substitutions as necessary (see browserscope/models/user_agent.py for an example) for capturing these bits.
+        * This assumes the implementation is best accomplished with an ordered list of regular expressions. If that's not the case, this may make less sense.
+      # Simple examples using the above regexes in python, Java, PHP, ruby, perl and C++ for embedding into your own application.
+
+
+= Unit Tests =
+
+This project should be thoroughly unit tested to prevent regressions. Obviously ;)
+
+= Open Source =
+
+This project should live on code.google.com and the web frontend should run on Google App Engine. It should be able to operate under the free quotas but if not, we will ask Google for support in terms of donating additional App Engine resources. 
