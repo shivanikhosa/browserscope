@@ -48,4 +48,4 @@ This project should be thoroughly unit tested to prevent regressions. Obviously 
 
 = Open Source =
 
-This project should live on code.google.com and the web frontend should run on Google App Engine. It should be able to operate under the free quotas but if not, we will ask Google for support in terms of donating additional App Engine resources. 
+This project should live on code.google.com or github and the web frontend should maybe run on Google App Engine (meaning the app code itself would need to be in either Java or python). It should be able to operate under the free quotas but if not, we will ask Google for support in terms of donating additional App Engine resources. 
