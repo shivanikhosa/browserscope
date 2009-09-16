@@ -1,6 +1,0 @@
-#summary This is a wiki page to house feature design docs.
-#labels Phase-Design
-
-= Feature Design Docs =
-
- * [UserAgentParsing User Agent Parsing]
