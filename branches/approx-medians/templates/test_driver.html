@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <script src="{{ "xhrio.js"|resource_path }}"></script>
+  <script src="{{ "util.js"|resource_path }}"></script>
+{% endblock %}
+
+{% block body %}
+  {% if autorun %}
+    <div id="bs-autorun-msg">
+      You are currently running the Browserscope tests in Autorun mode ...
+    </div>
+  {% else %}
+    <a
+      href="/{{ app_category }}/about"
+      class="bs-bc"
+      target="_top">Read more about the {{ app_category_name }} Tests</a>
+    <p id="bs-runtest-c">
+      <span
+        id="bs-runtest"
+        class="bs-btn"
+        >Run the {{ app_category_name }} Tests</span>
+      <label id="bs-send-beacon-label" for="bs-send-beacon">
+        <input id="bs-send-beacon" type="checkbox" checked="checked">
+        Share my results
+      </label>
+    </p>
+
+    <script>
+      var serverUaString = '{{current_ua_string}}';
+      var cb = Util.createChromeFrameCheckbox(serverUaString, true);
+      if (cb) {
+        var el = document.getElementById('bs-runtest-c');
+        el.insertBefore(cb,
+            document.getElementById('bs-send-beacon-label'));
+      }
+    </script>
+  {% endif %}
+
+  <script>
+    var testDriver = new Util.testDriver('{{ test_page }}',
+        '{{ app_category }}', '{{ app_category_name }}', '{{ csrf_token }}',
+        '{{ autorun }}', '{{ continue }}');
+    {% for app_category in  app_categories %}
+      testDriver.testCategories.push('{{ app_category.0 }}');
+    {% endfor %}
+    {% if autorun %}
+      testDriver.runTest();
+    {% endif %}
+  </script>
+{% endblock %}

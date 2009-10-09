@@ -1,0 +1,27 @@
+{% extends "simple.html" %}
+
+{% block body %}
+<h1>Link Prefetch (1 of 2)</h1>
+
+<script>
+window.onload = function() {
+    // in Firefox, prefetched resources are downloaded sequentially (!!)
+    setTimeout(gotoNextPage, 15000);
+}
+
+function gotoNextPage() {
+	parent.testframe.location = "link-prefetch2?t={{ epoch }}";
+}
+</script>
+
+<p>
+prefetching some resources...
+
+<p>
+<link rel="prefetch" href="http://stevesouders.com/bin/resource.cgi?type=gif&sleep=4&prefetch=1&t={{ epoch }}">
+<link rel="prefetch" href="http://stevesouders.com/bin/resource.cgi?type=css&sleep=4&prefetch=1&t={{ epoch }}">
+<link rel="prefetch" href="http://1.cuzillion.com/bin/resource.cgi?type=js&sleep=4&prefetch=1&t={{ epoch }}">
+
+
+{% endblock %}
+

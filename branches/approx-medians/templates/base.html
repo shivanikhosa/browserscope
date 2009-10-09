@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <title>
+    {% if app_category %}
+      {{ app_categories|by_key:app_category_index|by_key:1}} -
+    {% endif %}
+    {% if page_title %}
+      {{ page_title }} -
+    {% endif %}
+    {{ app_title }}
+  </title>
+  <meta charset="utf8">
+  <meta name="keywords" content="Browser, profiler, css, html, javascript, html5, benchmark, test suite">
+  {% ifequal chromeframe_enabled "1" %}
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  {% endifequal %}
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link
+    rel="stylesheet"
+    href="{{ "base.css"|resource_path }}"
+    type="text/css">
+  {% block style %}{% endblock %}
+  {% block head %}{% endblock %}
+</head>
+
+<body>
+  <h1 id="bs-logo" class="bs-ir">
+    <a href="/" target="_top"><span>{{ app_title }}</span></a>
+  </h1>
+  <div id="bs-nav">
+    <div class="g-unit g-first">
+      <div class="g-c">
+        <ul id="bs-nav-cats" class="g-section bs-compact bs-list-horz">
+        {% for tuple in app_categories %}
+          <li>
+            <a href="/{{ tuple|by_key:0 }}/test" target="_top">{{ tuple|by_key:1 }}</a>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="g-unit">
+      <div id="bs-nav-sub" class="g-c">
+
+        {% if user %}
+          <span>{{ user.nickname }}</span>
+        {% endif %}
+
+        <a href="/faq" target="_top">FAQ</a>
+
+        {% if user %}
+          <a href="{{ sign_out }}" target="_top" >Sign Out</a>
+        {% else %}
+          <a href="{{ sign_in }}" target="_top" >Sign In</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+  <div id="bs-body">
+    {% ifequal request_path_lastbit "about" %}
+      <a
+        href="/{{ app_category }}/test"
+        class="bs-bc"
+        target="_top">Go to the {{ app_category_name }} Tests</a>
+    {% endifequal %}
+
+    {% block body %}{% endblock %}
+  </div>
+
+  {% if hide_footer %}{% else %}
+    <div id="bs-foot">
+      <a href="/" target="_top">Home</a> |
+      <a href="/faq" target="_top">FAQ</a> |
+      <a href="http://code.google.com/p/browserscope/source/checkout" target="_top">Code</a> |
+      <a href="http://code.google.com/p/browserscope/issues/list" target="_top">Submit a Bug</a> |
+      <a href="http://groups.google.com/group/browserscope" target="_top">Mailing List</a> |
+      <a href="mailto:browserscope@googlegroups.com" target="_top">Contact</a>
+    </div>
+  {% endif %}
+
+  {% ifequal build "production" %}
+    <script>
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("UA-9733170-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+  {% endifequal %}
+</body>
+
+</html>
+

@@ -1,0 +1,162 @@
+{% spaceless %}
+<div id="rt-{{ category }}" class="rt">
+  <table id="rt-{{ category }}-t" cellpadding="0" cellspacing="0">
+    <thead>
+      <tr>
+        <th scope="col" class="rt-ua">
+          <form id="rt-{{ category }}-v-f" action="" method="get">
+            <input type="hidden" name="category" value="{{ category }}">
+            <input type="hidden" name="{{ category }}_results" value="{{ results_uri_string }}">
+            <select id="rt-{{ category }}-v" name="v">
+              {% for tuple in browser_nav %}
+                {% with tuple|by_key:0 as version %}
+                  <option
+                    value="{{ version }}"
+                    {% ifequal v version %}selected="selected"{% endifequal %}
+                    >{{ tuple|by_key:1 }}</option>
+                {% endwith %}
+              {% endfor %}
+            </select>
+            <input id="rt-{{ category }}-v-s" type="submit" value="go">
+          </form>
+          name
+        </th>
+        <th class="rt-ua-s-d">
+          {% ifequal category "acid3" %}{% else %}
+            score
+          {% endifequal %}
+        </th>
+
+        {% for test in tests %}
+          <th scope="col">
+            {{ test.name }}
+          </th>
+        {% endfor %}
+        <th># Tests</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user_agent in user_agents %}
+        {% if stats|by_key:user_agent|by_key:"current_results" %}
+          {% with stats|by_key:user_agent|by_key:"current_results" as results %}
+            <tr id="rt-{{ category }}-ua-s-r" class="rt-ua-s-hdr">
+              <td class="rt-ua">Your Test Results &darr;</td>
+              <td class="rt-ua-s-d"></td>
+              <td colspan="{{ tests|length|add:1 }}"></td>
+            </tr>
+            <tr class="rt-res">
+              <td
+                scope="row"
+                class="rt-ua
+                       rt-ua-s-{{ stats|by_key:user_agent|by_key:"current_score" }}">
+                <span class="bs-cur-ua goog-inline-block"></span>
+                <span id="rt-{{ category }}-cur-ua">{{ user_agent }}</span>
+              </td>
+              <td
+                class="rt-ua-s-d
+                       rt-ua-s-{{ stats|by_key:user_agent|by_key:"current_score" }}">
+                {{ stats|by_key:user_agent|by_key:"current_display" }}
+              </td>
+              {% for test in tests %}
+                <td
+                  align="{{ test.cell_align }}"
+                  class="rt-t-s-{{ stats|by_key:user_agent|by_key:"current_results"|by_key:test.key|by_key:"score" }}"
+                  >{{ stats|by_key:user_agent|by_key:"current_results"|by_key:test.key|by_key:"display" }}
+                  {% if is_admin %}
+                    {% if stats|by_key:user_agent|by_key:"current_results"|by_key:test.key|by_key:"expando" %}
+                      <small>({{ stats|by_key:user_agent|by_key:"current_results"|by_key:test.key|by_key:"expando" }}ms)</small>
+                    {% endif %}
+                  {% endif %}
+                </td>
+              {% endfor %}
+              <td class="rt-tot"></td>
+            </tr>
+          {% endwith %}
+        {% endif %}
+
+        {% if stats|by_key:user_agent|by_key:"results" %}
+          <tr
+            class="
+            {% ifequal user_agent current_user_agent %}
+              rt-ua-cur
+            {% endifequal %}
+            {% if forloop.last %}
+              rt-last
+            {% endif %}
+            "
+            >
+            <td
+              scope="row"
+              class="rt-ua rt-ua-s-{{ stats|by_key:user_agent|by_key:"score" }}">
+              {% ifequal user_agent current_user_agent %}
+                <span class="bs-cur-ua goog-inline-block"></span>
+              {% endifequal %}
+              <span>{{ user_agent }}</span>
+              {% if is_admin %}
+                <!--<a href="/clear_memcache?category={{ category }}&ua={{ user_agent }}&continue={{ request_path }}" class="bs-admin">clear</a>-->
+              {% endif %}
+            </td>
+
+            <td
+              class="rt-ua-s-d
+                     rt-ua-s-{{ stats|by_key:user_agent|by_key:"score" }}">
+              {{ stats|by_key:user_agent|by_key:"display" }}
+            </td>
+
+            {% for test in tests %}
+              <td
+                align="{{ test.cell_align }}"
+                class="rt-t-s-{{ stats|by_key:user_agent|by_key:"results"|by_key:test.key|by_key:"score" }}"
+                >{{ stats|by_key:user_agent|by_key:"results"|by_key:test.key|by_key:"display" }}
+              </td>
+            {% endfor %}
+            <td class="rt-tot">
+              {% if stats|by_key:user_agent|by_key:"current_results" %}
+                {% if stats|by_key:user_agent|by_key:"total_runs" %}
+                  {{ stats|by_key:user_agent|by_key:"total_runs"|add:1 }}
+                {% else %}
+                  0
+                {% endif %}
+              {% else %}
+                {{ stats|by_key:user_agent|by_key:"total_runs" }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endif %}
+
+      {% endfor %}
+    </tbody>
+    {% if is_admin %}
+      {% if params %}
+        <tfoot>
+          <tr>
+            <td colspan="{{ tests|length|add:3 }}">
+              params: <a href="/reflow/test/{{ params|join:"&" }}">{{ params }}</a>
+            </td>
+          </tr>
+        </tfoot>
+      {% endif %}
+    {% endif %}
+  </table>
+
+  <div class="bs-results-links">
+    <a href="/{{ category }}/test">Go to the {{ category_name }} Tests</a>
+    <a href="/{{ category }}/about">Learn about the {{ category_name }} Tests</a>
+    {% if is_admin %}
+      <a href="/clear_memcache?v={{ v }}&category={{ category }}&continue={{ request_path }}" class="bs-admin">clear {{ category }} {{ v }} memcache</a>
+    {% endif %}
+    {% if stats|by_key:"total_runs" %}
+      {{ stats|by_key:"total_runs" }} tests from {{ stats|length|add:"-1"}} browsers
+    {% endif %}
+
+    <span id="rt-dl-{{category }}" class="bs-results-dl">
+      <span>Downloads:</span>
+      <a class="bs-dl-py" href="/?category={{ category }}&v={{ v }}&o=pickle"
+        >pickle</a>
+      <a class="bs-dl-csv" href="/?category={{ category }}&v={{ v }}&o=csv"
+        >csv</a>
+    </span>
+  </div>
+
+</div>
+{% endspaceless %}

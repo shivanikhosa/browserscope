@@ -1,0 +1,620 @@
+/**
+  Copyright 2009 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the 'License')
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http:#www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an 'AS IS' BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ */
+
+/**
+ * Color Map
+ #4291bf => darkish-blue for buttons and some text.
+ #e8a63d => orange for the nav.
+ */
+
+body {
+  font: 87%/1.4 Arial, sans;
+  padding: 15px;
+  margin: 0;
+}
+
+h3 {
+  margin: 2px 0;
+}
+
+a {
+ color: #4291bf;
+}
+a:active {
+ color: #e8a63d;
+}
+a:visited {
+ color: #4291bf;
+}
+
+/** General styles **/
+.bs-compact {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bs-ir span {
+  position: absolute;
+  top: -9999px;
+}
+
+.bs-list-horz li {
+  float: left;
+}
+
+.bs-btn,
+a.bs-btn,
+.bs-btn-disabled {
+  background: #4291bf url(/static/img/gradients.png) 0 -43px repeat-x;
+  border: 0;
+  border-bottom: 1px solid #555;
+  padding: 5px 25px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 150%;
+  font-weight: bold;
+  text-shadow: 0 1px 2px #444;
+  white-space: nowrap;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-box-shadow: 0 2px 2px rgba(102, 102, 102, .4);
+  -webkit-box-shadow: 0 2px 2px rgba(102, 102, 102, .4);
+}
+.bs-btn-disabled {
+  background: #222;
+}
+.bs-btn:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.bs-btn-arr {
+  font-size: 80%;
+}
+
+h3 .bs-btn {
+  font-size: 80%;
+  font-style: normal;
+  margin: 0 0 0 1em;
+}
+
+p.bs-youcan {
+  width: 600px;
+}
+.bs-youcan dd {
+  margin-bottom: 1em;
+  width: 500px;
+  margin-left: 40px;
+}
+/* chrome frame checkbox */
+#bs-cf-enabled {
+  margin: 0 0 0 .7em;
+}
+#bs-cf-c label {
+  margin: 0 0 0 .2em;
+}
+#bs-autorun-msg {
+  background: #aaa;
+  color: #fff;
+  opacity: .9;
+  border: 1px solid #333;
+  border-top: 0;
+  font-weight: bold;
+  padding: 10px 20px 15px;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 33%;
+  text-shadow: 0 1px 2px #444;
+  -moz-box-shadow: 0 2px 2px rgba(102, 102, 102, .4);
+  -webkit-box-shadow: 0 2px 2px rgba(102, 102, 102, .4);
+  -moz-border-radius-bottomright: 15px;
+  -moz-border-radius-bottomleft: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+}
+#bs-runtest-c {
+  margin: 0;
+}
+#bs-test-iframe {
+  margin-top: 1em;
+  border: 1px solid #ccc;
+  background: #c7e3f0;
+}
+
+a.bs-admin {
+  font-size: 80%;
+  color: darkred !important;
+  text-decoration: none;
+}
+
+/** AllTests **/
+#bs-alltests dl {
+  margin-top: 2em;
+}
+#bs-alltests dd {
+  margin-top: 1em;
+}
+#bs-alltests .bs-btn {
+  font-weight: bold;
+  font-size: 150%;
+}
+
+/** TopNav **/
+#bs-logo {
+  margin: 0;
+  float: left;
+}
+#bs-logo a {
+  display: block;
+  background: url(/static/img/logo.png) 0 0 no-repeat;
+  width: 232px;
+  height: 39px;
+  margin: 0 20px 0 0;
+}
+#bs-nav {
+  overflow: hidden;
+  padding: 7px 0;
+  background: #f90;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-box-shadow: 0 2px 2px rgba(102, 102, 102, .4);
+  -webkit-box-shadow: 0 2px 2px rgba(102, 102, 102, .4);
+}
+#bs-nav .g-c {
+  padding: 3px 8px 0;
+}
+#bs-nav-cats {
+  float: left;
+  width: auto;
+  margin: 0 0 0 10px;
+}
+#bs-nav a,
+#bs-nav span {
+  font-size: 1.1em;
+  color: #fff;
+  _color: #000;
+  text-shadow: 0 1px 2px #444;
+  font-weight: bold;
+  text-decoration: none;
+  padding-right: .4em;
+  margin-right: .2em;
+  white-space: nowrap;
+}
+#bs-nav a:hover {
+  text-decoration: underline;
+}
+#bs-nav-sub a,
+#bs-nav-sub span {
+  font-size: 80%;
+}
+#bs-nav-cats li a {
+  width: auto;
+  padding: 3px 5px;
+  margin-right: .6em;
+}
+.bs-bc {
+  float: right;
+  margin-right: 7px;
+}
+
+#bs-body {
+  padding: 30px 0 0;
+}
+
+/** Footer **/
+#bs-foot {
+  margin: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 6px;
+  font-size: 80%;
+  text-align: center;
+}
+
+/**
+ * g-section fundamentally has to clear floats. There are many ways to do this.
+ * This technique is nice because it doesn't rely on overflow: hidden, which
+ * has the potential to hide your content in situations where a fixed size
+ * node takes up too much space (like a big table, or a text input or image.
+ * Works in Webkit, IE8, and FF3.
+ */
+.g-section {
+  width: 100%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+/**
+ * IE7-only hack. Nicely IE7 will clear floats with just block display
+ * and hasLayout.
+ */
+*:first-child+html .g-section {
+  display: block;
+}
+
+/**
+ * IE6 cannot hang with overflow: visible. If we use the IE7 display block
+ * trick in IE6 we get severe float drop in nested grids.
+ */
+* html .g-section {
+  overflow: hidden;
+}
+
+/* FF2 can't actually hang with overflow: visible. */
+@-moz-document url-prefix() {
+  .g-section {
+    overflow: hidden;
+  }
+}
+
+/**
+ * FF3 now needs to be reset after the previous block which affects it as well.
+ * We target the tt element in this hack because no one uses it.
+ */
+@-moz-document url-prefix() {
+  .g-section,tt:default {
+    overflow: visible;
+  }
+}
+
+/* Forces "hasLayout" fixing a gamut of bugs in <= IE7. */
+.g-section,
+.g-unit {
+  zoom: 1;
+}
+
+#bs-nav .g-unit {
+  width: 29.999%;
+  float: left;
+  text-align: right;
+}
+#bs-nav .g-first {
+  width: 69.999%;
+  text-align: left;
+}
+
+html>body .goog-inline-block {
+  display: -moz-inline-box; /* This is ignored by FF3 and later*/
+  display: inline-block; /* This is ignored by pre-FF3 Gecko */
+}
+.goog-inline-block {
+  position: relative;
+  display: inline-block;
+}
+* html .goog-inline-block {
+  display: inline;
+}
+*:first-child+html .goog-inline-block {
+  display: inline;
+}
+
+/** Home Page **/
+#bs-home-recent-c {
+  border-bottom: 1px solid #666;
+  float: right;
+  margin: 0 40px;
+}
+#bs-home-recent {
+  border: 10px solid #bebec3;
+  min-height: 200px;
+  padding: 8px;
+  background: #111;
+  color: #0f0;
+  width: 450px;
+  padding-top: 0;
+  font-family: "Andale Mono", "Vera Sans Mono", Courier, mono;
+  text-shadow: 0 0 1px #fff;
+  -moz-border-radius-topright: 2px;
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-right-radius: 2px;
+  -webkit-border-top-left-radius: 2px;
+}
+#bs-home-recent h2 {
+  font-size: 1em;
+  margin: 0;
+}
+#bs-home-recent-tests {
+  width: 100%;
+}
+#bs-home-recent-tests td {
+  padding: 2px;
+}
+#bs-home-intro-c {
+  padding: 0 5px;
+}
+#bs-home-intro-u {
+  min-width: 410px;
+}
+#bs-home-intro {
+  color: #4291bf;
+  font-size: 120%;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 5px;
+}
+#bs-home-intro-sub {
+  margin: 0 0 20px;
+  font-weight: bold;
+}
+#bs-home-cur-ua {
+  float: right;
+  font-size: 95%;
+  margin: 20px 15px 0 0;
+}
+#bs-home-cur-ua .bs-cur-ua {
+  margin-right: 0;
+}
+
+#bs-results-title {
+  border-top: 2px solid #ccc;
+  margin-bottom: 0;
+  padding-top: 5px;
+}
+
+.d-msg {
+  color: #e8a63d;
+  font-weight: bold;
+  padding: 0 20px;
+  margin: 0;
+}
+
+
+#bs-results {
+  margin-top: 1em;
+}
+
+#bs-results-cats {
+  overflow: hidden;
+  margin-left: .6em;
+}
+#bs-results-cats li {
+  float: left;
+  margin-right: .3em;
+  background-color: #ccc;
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+}
+#bs-results-cats a {
+  display: block;
+  padding: 4px 15px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #000;
+  outline: 0;
+}
+#bs-results-cats .bs-sel {
+  background-color: #ddd;
+  border-top: 1px solid #ddd;
+}
+#bs-results-cats .bs-sel a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+#bs-results-cats li:hover {
+  background-color: #ddd;
+}
+#bs-results-bycat {
+  padding: 3px;
+  background: #ddd;
+   /*display: inline-block; wraps the table */
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.bs-results-links a {
+  margin: 0 .5em;
+}
+.bs-results-dl {
+  margin-left: 2em;
+  font-size: 95%;
+}
+.bs-results-dl span {
+  margin-right: auto;
+}
+
+/**
+ * Results Table
+ */
+.rt-static {
+  padding: 5px 10px 0 8px;
+  font-size: 95%;
+}
+.rt {
+  font-size: 90%;
+  margin: 5px;
+}
+.rt .rt-v form {
+  padding: 3px 10px;
+}
+.rt table {
+  empty-cells: show;
+  background: #fff;
+  border-collapse: collapse;
+  margin-bottom: 4px;
+}
+.rt thead th {
+  cursor: pointer;
+}
+.rt tbody td {
+  padding: .4em;
+}
+.rt td {
+  border: 1px solid #ddd;
+  white-space: nowrap;
+}
+/*
+.rt tr:hover td {
+  border-bottom-color: #333;
+}
+*/
+.rt thead td,
+.rt th,
+.rt tfoot,
+.rt-ua,
+.rt-ua-s-d {
+  font-weight: normal;
+  background-color: #eee;
+  padding: .4em .3em;
+  margin: 0;
+  border: 1px solid #ddd;
+}
+.rt-ua-s-hdr td {
+  background: #4291bf;
+  color: #fff;
+  font-weight: bold;
+}
+.rt th {
+  background: #eee url(/static/img/gradients.png) 0 -163px repeat-x;
+  border-top: 1px solid #ccc;
+}
+.rt td.rt-ua,
+.rt th.rt-ua,
+.rt .rt-ua-s-d {
+  white-space: nowrap;
+}
+.rt td.rt-ua,
+.rt th.rt-ua {
+  text-align: left;
+}
+.rt .rt-ua-s-d {
+  text-align: right;
+}
+.rt th.rt-ua {
+  background: #eee url(/static/img/gradients.png) 0 -88px repeat-x;
+  border-left: 1px solid #ccc;
+  border-right: 0;
+  vertical-align: bottom;
+}
+.rt th.rt-ua-s-d {
+  background: #eee url(/static/img/gradients.png) 0 -88px repeat-x;
+  vertical-align: bottom;
+}
+.rt td.rt-ua {
+  border-right: 0;
+  border-left: 1px solid #ccc;
+}
+.rt .rt-last td {
+  border-bottom-color: #ccc;
+}
+/* score display */
+.rt .rt-ua-s-d {
+  border-left: 0;
+  border-right: 3px solid #bbb;
+}
+
+.rt tfoot em {
+  font-size: 70%;
+}
+
+.bs-cur-ua {
+  background: #4291bf;
+  height: 10px;
+  width: 10px;
+  margin-right: .4em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.rt-loading,
+.rt-err {
+  padding: 5em;
+  text-align: center;
+  font-size: 200%;
+  font-weight: bold;
+  color: #666;
+}
+.rt-loading {
+  background: url(/static/img/loading.gif) 50% 34% no-repeat;
+}
+
+
+/* Test scores */
+.rt-t-s-0 {
+  background: #fff;
+}
+.rt-t-s-1,
+.rt-t-s-2,
+.rt-t-s-3,
+.rt-t-s-4,
+.rt-t-s-5 {
+  background: #f7d7d7;
+}
+.rt-t-s-6 {
+  background: #fffdd9;
+}
+.rt-t-s-7 {
+  background: #dffcd8;
+}
+.rt-t-s-8 {
+  background: #c0f9b0;
+}
+.rt-t-s-9 {
+  background: #a3f687;
+}
+.rt-t-s-10 {
+  background-color: #a3f687;
+}
+
+.rt-ua-s-0 {
+  background-color: #eee;
+}
+.rt-ua-s-1,
+.rt-ua-s-2,
+.rt-ua-s-3,
+.rt-ua-s-4,
+.rt-ua-s-5 {
+  background-color: #f7d7d7;
+}
+.rt-ua-s-6 {
+  background-color: #fffdd9;
+}
+.rt-ua-s-7 {
+  background-color: #dffcd8;
+}
+.rt-ua-s-8 {
+  background-color: #c0f9b0;
+}
+.rt-ua-s-9 {
+  background-color: #a3f687;
+}
+.rt-ua-s-10 {
+  background-color: #a3f687;
+}
+
+.rt-tot {
+  background: #f5f5f5;
+  text-align: right;
+}
+
+/* down arrow */
+.goog-tablesorter-sorted:after {
+  content: "\2193";
+}
+/* up arrow */
+.goog-tablesorter-sorted-reverse:after {
+  content: "\2191";
+}
+
+/** FAQ **/
+#bs-faq dt {
+  font-size: 130%;
+  font-weight: bold;
+}
+#bs-faq dd {
+  margin: .5em 0 1em .5em;
+}

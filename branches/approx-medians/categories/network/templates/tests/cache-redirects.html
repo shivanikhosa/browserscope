@@ -1,0 +1,17 @@
+{% extends "simple.html" %}
+
+{% block body %}
+<h1>Cache Redirects (1 of 2)</h1>
+
+<script>
+window.onload = function() {
+	parent.testframe.location = "cache-redirects2?t={{ epoch }}";
+}
+</script>
+
+<p>
+loading a redirect to test caching...
+
+<iframe src="http://stevesouders.com/bin/resource.cgi?redir=1&type=html&sleep=4&t={{ epoch }}" style="width: 0; height: 0; border: 0;"></iframe>
+
+{% endblock %}
