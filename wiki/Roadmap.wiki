@@ -1,0 +1,16 @@
+#summary Browserscope Roadmap
+
+= Browserscope Roadmap =
+
+== Q4 2009 ==
+
+[http://code.google.com/p/browserscope/issues/list?can=2&q=milestone=Q4-2009&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Summary Q4-2009 Issues]
+
+Objective: Be able to roll out median trees much more quickly.
+KR: Overall, we need to be able to regenerate our median data more quickly to enable fixes to either the logic in calculating the results themselves or else when we fix User Agent classifications. This entails trying a variety of mechanisms to achieve this goal, i.e. offline SQL based updates, dynamic sampling, etc...
+
+Objective: Store more granular data for test results.
+KR: Bundled tests which actually represent a bunch of tests under the hood. Right now we're solving this problem in a non-scalable way with the GetRowScore method, but that requires all of the possible data for a row, and it's so slow that we have to fall back to static results tables (i.e. RichText). Our Selectors API results are missing all of the granularity from the 2000 tests currently due to this issue.
+
+Objective: Expose Trending Graphs to evaluate browser progress.
+KR: Right now our results tables take alot of inference in order to discern the speed of improvement over time and over versions. We should expose a gviz data provider backend that enables chart configurations as an alternate to the table view UI.
