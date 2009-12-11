@@ -2,6 +2,9 @@
 
 = Browserscope Roadmap =
 
+This page is done in OKR (Objective, Key Result) style, and is essentially an high-level view of where we're heading with Browserscope. There are of course many related and tangential issues which can be found in our Issue Tracker.
+
+
 == Q4 2009 ==
 
 === The Prepare to Scale More Broadly Quarter ===
