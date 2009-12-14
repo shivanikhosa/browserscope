@@ -6,11 +6,18 @@ This page is done in OKR (Objective, Key Result) style, and is essentially an hi
 
 ----
 
+== Indeterminate ==
+
+*Objective*: Divorce Browserscope from its UA Parsing code.
+
+*KR*: Spin up a UA Parser project, and have Browserscope dogfood that library/tool. For more info, check out the [[http://code.google.com/p/browserscope/wiki/UserAgentParsing UA Parser Design Doc]]
+
+
 == Q4 2009 ==
 
 === The Prepare to Scale More Broadly Quarter ===
 
-[http://code.google.com/p/browserscope/issues/list?can=2&q=milestone=Q4-2009&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Summary Q4-2009 Issues]
+[http://code.google.com/p/browserscope/issues/list?can=2&q=milestone=Q4-2009&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Summary Q4-2009 Issues in our Issue Tracker]
 
 *Objective*: Be able to roll out median trees much more quickly.
 
@@ -32,7 +39,7 @@ This page is done in OKR (Objective, Key Result) style, and is essentially an hi
 
 === The Begin Scaling More Broadly Quarter ===
 
-[http://code.google.com/p/browserscope/issues/list?can=2&q=milestone=Q1-2010&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Summary Q1-2010 Issues]
+[http://code.google.com/p/browserscope/issues/list?can=2&q=milestone=Q1-2010&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Summary Q1-2010 Issues in our Issue Tracker]
 
 *Objective*: Be able to store more granular data for test results while compacting into < 15 table result columns.
 
@@ -49,7 +56,7 @@ This page is done in OKR (Objective, Key Result) style, and is essentially an hi
 
 === The Scaling More Broadly Quarter (aka Fanout Filly) ===
 
-[http://code.google.com/p/browserscope/issues/list?can=2&q=milestone=Q2-2010&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Summary Q2-2010 Issues]
+[http://code.google.com/p/browserscope/issues/list?can=2&q=milestone=Q2-2010&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Summary Q2-2010 Issues in our Issue Tracker]
 
 *Objective*: Allow users to run their own tests on Browserscope, visualize their results via the table and graphs, and download the result data.
 
