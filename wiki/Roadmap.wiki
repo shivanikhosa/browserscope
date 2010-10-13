@@ -23,7 +23,7 @@ This page is done in OKR (Objective, Key Result) style, and is essentially an hi
 
 *KR*: Start working on a UI for browsing existing tests to help developers bring attention to their work.
 
-*KR*: Work with DevRel folks on some relevant visualizations for tests they've written.
+*KR*: Work with developer relations folks on some relevant visualizations for tests they've written.
 
 
 ----
