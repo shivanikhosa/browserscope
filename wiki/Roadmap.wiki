@@ -15,14 +15,15 @@ This page is done in OKR (Objective, Key Result) style, and is essentially an hi
 
 == Q4 20102 ==
 
-=== RichText2 - new test category ===
+*Objective*: !RichText2 as new test category
 
-*KR*: Store the data - RichText2 includes a LOT of tests, so we'll have to do something to deal with parallelizing the storage process of records in order to collect data effectively.
+*KR*: Store the data - !RichText2 includes a LOT of tests, so we'll have to do something to deal with parallelizing the storage process of records in order to collect data effectively.
 
-=== UserTests browsing/sharing UI ===
+*Objective*: UserTests browsing/sharing UI
 
 *KR*: Start working on a UI for browsing existing tests to help developers bring attention to their work.
 *KR*: Work with DevRel folks on some relevant visualizations for tests they've written
+
 
 == Q4 2009 ==
 
