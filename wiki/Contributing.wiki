@@ -1,6 +1,6 @@
-#summary How to contribute to Browserscope
+#summary How to contribute
 
-= Introduction =
+= Contributing to Browserscope =
 
 We'd love for you to contribute to Browserscope. Our process is simple, just email a diff to the mailing list at browserscope@googlegroups.com explaining your patch, and we'll apply and submit it. Once we've committed a few of your patches, we'll make you a repository committer. 
 
